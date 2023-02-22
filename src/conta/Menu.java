@@ -2,9 +2,43 @@ package conta;
 
 import java.util.Scanner;
 
+import conta.model.Conta;
+import conta.model.ContaCorrente;
+import conta.model.ContaPoupanca;
+import conta.util.Cores;
+
 public class Menu {
 
 	public static void main(String[] args) {
+
+		// Testa classe Conta
+
+		Conta c1 = new Conta(1, 123, 1, "Guilherme", 10000.0f);
+		c1.visualizar();
+		c1.sacar(12000.0f);
+		c1.visualizar();
+		c1.depositar(5000.0f);
+		c1.visualizar();
+		System.out.println();
+
+		// Testa classe Conta Corrente
+
+		ContaCorrente cc1 = new ContaCorrente(1, 123, 1, "Vinicius Amorim", 0.0f, 1000.0f);
+		cc1.visualizar();
+		cc1.sacar(12000.0f);
+		cc1.visualizar();
+		cc1.depositar(5000.0f);
+		cc1.visualizar();
+		System.out.println();
+
+		// Testa classe Conta Poupança
+		ContaPoupanca cp1 = new ContaPoupanca(2, 123, 2, "Susy Tateshita", 100000.0f, 15);
+		cp1.visualizar();
+		cp1.sacar(1000.0f);
+		cp1.visualizar();
+		cp1.depositar(5000.0f);
+		cp1.visualizar();
+		System.out.println();
 
 		Scanner scan = new Scanner(System.in);
 
@@ -12,7 +46,8 @@ public class Menu {
 
 		while (true) {
 
-			System.out.println("|****************************************************|");
+			System.out.println(Cores.TEXT_YELLOW + Cores.ANSI_BLACK_BACKGROUND
+					+ "|****************************************************|");
 			System.out.println("|                                                    |");
 			System.out.println("|                BANCO DO JAVEIRO                    |");
 			System.out.println("|                                                    |");
@@ -30,45 +65,43 @@ public class Menu {
 			System.out.println("|                                                    |");
 			System.out.println("******************************************************");
 			System.out.print("Entre com a opção desejada: ");
+			System.out.println("                          " + Cores.TEXT_RESET);
 			opcao = scan.nextInt();
 			scan.nextLine();
 
 			switch (opcao) {
 			case 1:
-				System.out.println("Criar Conta\n");
+				System.out.println(Cores.TEXT_WHITE + "Criar Conta\n");
 				break;
 			case 2:
-				System.out.println("Listar todas as Contas\n");
+				System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n");
 				break;
 			case 3:
-				System.out.println("Consultar dados da Conta - por número\n");
+				System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n");
 				break;
 			case 4:
-				System.out.println("Atualizar dados da Conta\n");
+				System.out.println(Cores.TEXT_WHITE + "Atualizar dados da Conta\n");
 				break;
 			case 5:
-				System.out.println("Apagar a Conta\n");
+				System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n");
 				break;
 			case 6:
-				System.out.println("Saque\n");
+				System.out.println(Cores.TEXT_WHITE + "Saque\n");
 				break;
 			case 7:
-				System.out.println("Depósito\n");
+				System.out.println(Cores.TEXT_WHITE + "Depósito\n");
 				break;
 			case 8:
 				System.out.println("Transferência entre Contas\n");
 				break;
 			case 9:
-				System.out.println("Banco Javeiro - O seu Futuro começa aqui!\n");
+				System.out.println(Cores.TEXT_WHITE_BOLD + "Banco Javeiro - O seu Futuro começa aqui!\n");
 				System.exit(0);
 				break;
 			default:
-				System.err.println("\nOpção Inválida!\n");
+				System.err.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida!\n");
 				break;
 			}
-
-			scan.close();
-
 		}
 	}
 }
