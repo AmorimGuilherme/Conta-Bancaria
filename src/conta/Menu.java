@@ -1,5 +1,7 @@
 package conta;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import conta.model.ContaCorrente;
@@ -56,42 +58,75 @@ public class Menu {
 			System.out.println("******************************************************");
 			System.out.print("Entre com a opção desejada: ");
 			System.out.println("                          " + Cores.TEXT_RESET);
-			opcao = scan.nextInt();
-			scan.nextLine();
+			// scan.nextLine();
+
+			try {
+				opcao = scan.nextInt();
+
+			} catch (InputMismatchException ex) {
+				System.out.print("Digite valores inteiros: ");
+				scan.next();
+				opcao = 0;
+			}
 
 			switch (opcao) {
 			case 1:
 				System.out.println(Cores.TEXT_WHITE + "Criar Conta\n");
+				keyPress();
 				break;
 			case 2:
 				System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n");
+				keyPress();
 				break;
 			case 3:
 				System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n");
+				keyPress();
 				break;
 			case 4:
 				System.out.println(Cores.TEXT_WHITE + "Atualizar dados da Conta\n");
+				keyPress();
 				break;
 			case 5:
 				System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n");
+				keyPress();
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_WHITE + "Saque\n");
+				keyPress();
 				break;
 			case 7:
 				System.out.println(Cores.TEXT_WHITE + "Depósito\n");
+				keyPress();
 				break;
 			case 8:
 				System.out.println("Transferência entre Contas\n");
+				keyPress();
 				break;
 			case 9:
 				System.out.println(Cores.TEXT_WHITE_BOLD + "Banco Javeiro - O seu Futuro começa aqui!\n");
 				System.exit(0);
+				keyPress();
 				break;
 			default:
 				System.err.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida!\n");
+				keyPress();
 				break;
 			}
 		}
 	}
+
+	public static void keyPress() {
+
+		try {
+
+			System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
+			System.in.read();
+
+		} catch (IOException e) {
+
+			System.out.println("Você pressionou uma tecla diferente de enter!");
+
+		}
+	}
+
 }
